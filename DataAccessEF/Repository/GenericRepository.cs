@@ -1,5 +1,6 @@
 ﻿using DataAccessEF.DbContex;
 using DataAccessEF.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace DataAccessEF.Repository
@@ -21,14 +22,17 @@ namespace DataAccessEF.Repository
         }
         public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
         {
+            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             return context.Set<T>().Where(expression);
         }
         public IEnumerable<T> GetAll()
         {
+            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             return context.Set<T>().ToList();
         }
         public T GetById(int id)
         {
+            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             return context.Set<T>().Find(id);
         }
         public void Remove(T entity)
