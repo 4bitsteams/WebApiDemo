@@ -1,5 +1,7 @@
-﻿using DataAccessEF.Interfaces;
+﻿using BLL.IManager;
+using DataAccessEF.Interfaces;
 using Domain.Models;
+using Domain.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +12,11 @@ namespace WebApiDemo.Controllers
     public class PersonController : ControllerBase
     {
         private readonly IUnitOfWork unitOfWork;
-        public PersonController(IUnitOfWork unitOfWork)
+        private readonly IPersonManager personManager;
+        public PersonController(IUnitOfWork unitOfWork, IPersonManager personManager)
         {
             this.unitOfWork = unitOfWork;
+            this.personManager = personManager;
         }
         [HttpGet]
         public IEnumerable<Person> GetAllPersons()
@@ -31,6 +35,13 @@ namespace WebApiDemo.Controllers
         public Person GetAdultPersonsById(int id)
         {
             return unitOfWork.Person.GetById(id);
+        }
+        
+        [Route("[action]")]
+        [HttpGet]
+        public PersonViewModel GetPersonsById(int id)
+        {
+            return personManager.GetById(id);
         }
     }
 }

@@ -1,3 +1,5 @@
+using BLL.IManager;
+using BLL.Manager;
 using DataAccessEF;
 using DataAccessEF.DbContex;
 using DataAccessEF.Interfaces;
@@ -18,6 +20,7 @@ var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<PeopleContext>(x => x.UseSqlServer(connectionString));
 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IPersonManager, PersonManager>();
 
 var app = builder.Build();
 
