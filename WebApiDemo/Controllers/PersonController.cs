@@ -25,5 +25,12 @@ namespace WebApiDemo.Controllers
         {
             return unitOfWork.Person.GetAdultPersons();
         }
+        
+        [Route("[action]")]
+        [HttpGet]
+        public Person GetAdultPersonsById(int id)
+        {
+            return unitOfWork.Person.GetById(id);
+        }
     }
 }

@@ -10,7 +10,8 @@ namespace DataAccessEF.Repository
 
         IEnumerable<Person> IPersonRepository.GetAdultPersons()
         {
-            return context.Person.Where(pers => pers.Age >= 18).ToList();
+            var result= context.Person.Where(pers => pers.Age >= 32).ToList();
+            return result;
         }
     }
 }

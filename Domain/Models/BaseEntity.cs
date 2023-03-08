@@ -9,17 +9,17 @@ namespace Domain.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public int CreatedBy { get; set; }
+        public int? CreatedBy { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
-        public int UpdatedBy { get; set; }
+        public int? UpdatedBy { get; set; }
 
-        public DateTime UpdatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
 
-        public int DeletedBy { get; set; }
+        public int? DeletedBy { get; set; }
 
-        public int DeletedDate { get; set; }
+        public int? DeletedDate { get; set; }
 
         public Boolean IsActive { get; set; }
 

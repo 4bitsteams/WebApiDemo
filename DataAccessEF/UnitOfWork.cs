@@ -37,6 +37,7 @@ namespace DataAccessEF
         public void Dispose()
         {
             context.Dispose();
+            GC.SuppressFinalize(this);
         }
         public int Save()
         {
