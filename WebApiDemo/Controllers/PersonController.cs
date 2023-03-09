@@ -11,30 +11,28 @@ namespace WebApiDemo.Controllers
     [Route("[controller]")]
     public class PersonController : ControllerBase
     {
-        private readonly IUnitOfWork unitOfWork;
         private readonly IPersonManager personManager;
-        public PersonController(IUnitOfWork unitOfWork, IPersonManager personManager)
+        public PersonController(IPersonManager personManager)
         {
-            this.unitOfWork = unitOfWork;
             this.personManager = personManager;
         }
         [HttpGet]
-        public IEnumerable<Person> GetAllPersons()
+        public IEnumerable<PersonViewModel> GetAllPersons()
         {
-            return unitOfWork.Person.GetAll();
+            return this.personManager.GetAll();
         }
         [Route("[action]")]
         [HttpGet]
-        public IEnumerable<Person> GetAdultPersons()
+        public IEnumerable<PersonViewModel> GetAdultPersons()
         {
-            return unitOfWork.Person.GetAdultPersons();
+            return this.personManager.GetAdultPersons();
         }
         
         [Route("[action]")]
         [HttpGet]
-        public Person GetAdultPersonsById(int id)
+        public PersonViewModel GetAdultPersonsById(int id)
         {
-            return unitOfWork.Person.GetById(id);
+            return this.personManager.GetById(id);
         }
         
         [Route("[action]")]

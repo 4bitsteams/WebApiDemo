@@ -8,9 +8,11 @@ namespace BLL.Manager
     public class PersonManager : IPersonManager
     {
         private readonly IUnitOfWork unitOfWork;
-        public PersonManager(IUnitOfWork unitOfWork)
+        private readonly IPersonRepository personRepository;
+        public PersonManager(IUnitOfWork unitOfWork, IPersonRepository personRepository)
         {
             this.unitOfWork = unitOfWork;
+            this.personRepository = personRepository;
         }
         public void Add(PersonViewModel entity)
         {
@@ -40,8 +42,7 @@ namespace BLL.Manager
         public PersonViewModel GetById(int id)
         {
             PersonViewModel personViewModel = new PersonViewModel();
-            var result= unitOfWork.Person.GetById(id);
-
+            var result= personRepository.GetById(id);
             return personViewModel;
         }
 

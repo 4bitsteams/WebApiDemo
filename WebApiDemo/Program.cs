@@ -3,6 +3,7 @@ using BLL.Manager;
 using DataAccessEF;
 using DataAccessEF.DbContex;
 using DataAccessEF.Interfaces;
+using DataAccessEF.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<PeopleContext>(x => x.UseSqlServer(connectionStrin
 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IPersonManager, PersonManager>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 
 var app = builder.Build();
 

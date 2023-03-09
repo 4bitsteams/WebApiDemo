@@ -10,25 +10,25 @@ namespace DataAccessEF
         public UnitOfWork(PeopleContext context)
         {
             this.context = context;
-            Address = new AddressRepository(this.context);
-            Email = new EmailRepository(this.context);
-            Person = new PersonRepository(this.context);
+            //Address = new AddressRepository(this.context);
+            //Email = new EmailRepository(this.context);
+            //Person = new PersonRepository(this.context);
         }
-        public IAdressRepository Address
-        {
-            get;
-            private set;
-        }
-        public IEmailRepository Email
-        {
-            get;
-            private set;
-        }
-        public IPersonRepository Person
-        {
-            get;
-            private set;
-        }
+        //public IAdressRepository Address
+        //{
+        //    get;
+        //    private set;
+        //}
+        //public IEmailRepository Email
+        //{
+        //    get;
+        //    private set;
+        //}
+        //public IPersonRepository Person
+        //{
+        //    get;
+        //    private set;
+        //}
 
         ~UnitOfWork() => Dispose();
         public void Dispose()

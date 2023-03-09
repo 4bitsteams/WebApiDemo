@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessEF.Repository
 {
-    class PersonRepository : GenericRepository<Person>, IPersonRepository
+    public class PersonRepository : GenericRepository<Person>, IPersonRepository
     {
         public PersonRepository(PeopleContext context) : base(context) { }
 
