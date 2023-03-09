@@ -29,6 +29,8 @@ namespace DataAccessEF
             get;
             private set;
         }
+
+        ~UnitOfWork() => Dispose();
         public void Dispose()
         {
             context.Dispose();
